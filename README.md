@@ -36,14 +36,14 @@ npm run check-types         # Verificar status dos tipos
 ```typescript
 // Content-Types
 import { 
-  PaginaSEOsiteMetadataWithSlugType,
-  PaginaSEOsiteMetadataWithSlugSchema,
+  PaginaSEOsiteMetadataWithSlugType, // Use para inferir tipos
+  PaginaSEOsiteMetadataWithSlugSchema, // Use para validação
 } from '@cms-types/content-types';
 
 // Sections
 import { 
-  CarouselType,
-  CarouselSchema,
+  CarouselType, // Use para inferir tipos
+  CarouselSchema,  // Use para validação
 } from '@cms-types/sections';
 
 // Utilitários TypeBox
