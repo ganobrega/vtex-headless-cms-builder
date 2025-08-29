@@ -1,0 +1,2886 @@
+[
+  {
+    "name": "Search",
+    "requiredScopes": [],
+    "schema": {
+      "title": "Barra de Busca",
+      "type": "object",
+      "description": "Configuração da Barra de Busca",
+      "required": [
+        "searchInput",
+        "searchHistory",
+        "searchTop",
+        "searchAutocomplete"
+      ],
+      "properties": {
+        "searchInput": {
+          "title": "Campo de Entrada",
+          "type": "object",
+          "properties": {
+            "placeholder": {
+              "title": "Texto de Exemplo",
+              "type": "string",
+              "default": "Busque por tudo na loja"
+            },
+            "icon": {
+              "title": "Ícone de Busca",
+              "type": "object",
+              "properties": {
+                "icon": {
+                  "title": "Ícone",
+                  "type": "string",
+                  "enumNames": ["Lupa"],
+                  "enum": ["MagnifyingGlass"],
+                  "default": "MagnifyingGlass"
+                },
+                "alt": {
+                  "title": "Texto Alternativo",
+                  "type": "string",
+                  "default": "Lupa"
+                }
+              }
+            }
+          }
+        },
+        "searchHistory": {
+          "title": "Histórico de Busca",
+          "type": "object",
+          "properties": {
+            "title": {
+              "title": "Título",
+              "type": "string",
+              "default": "Histórico"
+            },
+            "clearButtonLabel": {
+              "type": "string",
+              "title": "Texto do Botão Limpar",
+              "default": "Limpar Histórico"
+            },
+            "icon": {
+              "title": "Ícone",
+              "type": "object",
+              "properties": {
+                "icon": {
+                  "title": "Ícone",
+                  "type": "string",
+                  "enumNames": ["Relógio"],
+                  "enum": ["ClockClockwise"],
+                  "default": "ClockClockwise"
+                },
+                "alt": {
+                  "type": "string",
+                  "title": "Texto Alternativo",
+                  "default": "Histórico"
+                }
+              }
+            },
+            "maxItems": {
+              "title": "Número Máximo de Itens do Histórico",
+              "type": "integer",
+              "default": 5
+            }
+          }
+        },
+        "searchTop": {
+          "title": "Buscas Populares",
+          "type": "object",
+          "properties": {
+            "title": {
+              "title": "Título",
+              "type": "string",
+              "default": "Buscas Populares"
+            },
+            "maxItems": {
+              "title": "Número Máximo de Buscas Populares",
+              "type": "integer",
+              "default": 5
+            }
+          }
+        },
+        "searchAutocomplete": {
+          "title": "Autocompletar",
+          "type": "object",
+          "properties": {
+            "icon": {
+              "title": "Ícone",
+              "type": "object",
+              "properties": {
+                "icon": {
+                  "title": "Ícone",
+                  "type": "string",
+                  "enumNames": ["Lupa"],
+                  "enum": ["MagnifyingGlass"]
+                },
+                "alt": {
+                  "type": "string",
+                  "title": "Texto Alternativo",
+                  "default": "Lupa"
+                }
+              }
+            },
+            "maxItems": {
+              "title": "Número Máximo de Itens de Autocompletar",
+              "type": "integer",
+              "default": 5
+            }
+          }
+        },
+        "searchProducts": {
+          "title": "Produtos Sugeridos",
+          "type": "object",
+          "properties": {
+            "title": {
+              "title": "Título",
+              "type": "string",
+              "default": "Produtos Sugeridos"
+            },
+            "maxItems": {
+              "title": "Número Máximo de Produtos Sugeridos",
+              "type": "integer",
+              "default": 5
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "name": "Navbar",
+    "requiredScopes": [],
+    "schema": {
+      "title": "Barra de Navegação",
+      "type": "object",
+      "description": "Configuração da barra de navegação",
+      "required": ["logo"],
+      "properties": {
+        "logo": {
+          "title": "Logo",
+          "type": "object",
+          "required": ["src"],
+          "properties": {
+            "src": {
+              "title": "Imagem",
+              "type": "string",
+              "widget": {
+                "ui:widget": "media-gallery"
+              }
+            },
+            "alt": {
+              "title": "Texto Alternativo",
+              "type": "string"
+            },
+            "link": {
+              "title": "Link do Logo",
+              "type": "object",
+              "required": ["url", "title"],
+              "properties": {
+                "url": {
+                  "title": "URL do Link",
+                  "type": "string"
+                },
+                "title": {
+                  "title": "Título do Link",
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "searchInput": {
+          "title": "Campo de Busca",
+          "description": "Configurações do campo de busca",
+          "type": "object",
+          "required": ["sort"],
+          "properties": {
+            "placeholder": {
+              "title": "Texto de exemplo para a barra de busca",
+              "type": "string",
+              "default": "Busque por tudo na loja"
+            },
+            "sort": {
+              "title": "Ordenação padrão dos resultados",
+              "type": "string",
+              "default": "score_desc",
+              "enumNames": [
+                "Preço, maior para menor",
+                "Preço, menor para maior",
+                "Mais vendidos",
+                "Nome, A-Z",
+                "Nome, Z-A",
+                "Data de lançamento",
+                "Desconto",
+                "Relevância"
+              ],
+              "enum": [
+                "price_desc",
+                "price_asc",
+                "orders_desc",
+                "name_asc",
+                "name_desc",
+                "release_desc",
+                "discount_desc",
+                "score_desc"
+              ]
+            },
+            "quickOrderSettings": {
+              "title": "Configurações de Pedido Rápido",
+              "type": "object",
+              "properties": {
+                "quickOrder": {
+                  "title": "Ativar Pedido Rápido?",
+                  "description": "Permite adicionar produtos diretamente ao carrinho através de termos de busca, agilizando a compra.",
+                  "type": "boolean",
+                  "default": false
+                },
+                "skuMatrix": {
+                  "title": "Configuração da Matriz SKU",
+                  "type": "object",
+                  "properties": {
+                    "triggerButtonLabel": {
+                      "title": "Texto do botão da Matriz SKU a ser exibido",
+                      "type": "string",
+                      "default": "Selecionar múltiplos"
+                    },
+                    "columns": {
+                      "title": "Colunas",
+                      "type": "object",
+                      "properties": {
+                        "name": {
+                          "title": "Texto da coluna do nome do SKU",
+                          "type": "string",
+                          "default": "Nome"
+                        },
+                        "additionalColumns": {
+                          "title": "Colunas adicionais",
+                          "type": "array",
+                          "items": {
+                            "title": "Coluna",
+                            "type": "object",
+                            "required": ["label", "value"],
+                            "properties": {
+                              "label": {
+                                "title": "Texto",
+                                "type": "string"
+                              },
+                              "value": {
+                                "title": "Valor",
+                                "type": "string"
+                              }
+                            }
+                          }
+                        },
+                        "availability": {
+                          "title": "Texto da coluna de disponibilidade",
+                          "type": "object",
+                          "properties": {
+                            "label": {
+                              "title": "Texto",
+                              "type": "string",
+                              "default": "Disponibilidade"
+                            },
+                            "stockDisplaySettings": {
+                              "title": "Configurações de exibição do estoque",
+                              "description": "Controle como o status do estoque dos seus produtos é exibido aos clientes na sua loja online.",
+                              "type": "string",
+                              "enum": ["showAvailability", "showStockQuantity"],
+                              "enumNames": [
+                                "Mostrar disponibilidade (Disponível/Fora de Estoque)",
+                                "Mostrar quantidade em estoque"
+                              ],
+                              "default": "showAvailability"
+                            }
+                          }
+                        },
+                        "price": {
+                          "title": "Texto da coluna de preço",
+                          "type": "string",
+                          "default": "Preço"
+                        },
+                        "quantitySelector": {
+                          "title": "Texto da coluna do seletor de quantidade",
+                          "type": "string",
+                          "default": "Quantidade"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "signInButton": {
+          "title": "Botão de Login",
+          "type": "object",
+          "properties": {
+            "icon": {
+              "title": "Ícone",
+              "type": "object",
+              "properties": {
+                "icon": {
+                  "title": "Ícone",
+                  "type": "string",
+                  "enumNames": ["Usuário"],
+                  "enum": ["User"],
+                  "default": "User"
+                },
+                "alt": {
+                  "title": "Texto Alternativo",
+                  "type": "string",
+                  "default": "Usuário"
+                }
+              }
+            },
+            "label": {
+              "title": "Chamada para Ação",
+              "type": "string",
+              "default": "Entrar"
+            },
+            "myAccountLabel": {
+              "title": "Texto da Minha Conta",
+              "type": "string",
+              "default": "Minha Conta"
+            }
+          }
+        },
+        "cartIcon": {
+          "title": "Ícone do Carrinho",
+          "type": "object",
+          "properties": {
+            "icon": {
+              "title": "Ícone",
+              "type": "string",
+              "enumNames": ["Carrinho de Compras"],
+              "enum": ["ShoppingCart"],
+              "default": "ShoppingCart"
+            },
+            "alt": {
+              "title": "Texto Alternativo",
+              "type": "string",
+              "default": "Carrinho de Compras"
+            }
+          }
+        },
+        "navigation": {
+          "title": "Navegação",
+          "type": "object",
+          "properties": {
+            "regionalization": {
+              "type": "object",
+              "title": "Regionalização",
+              "properties": {
+                "enabled": {
+                  "type": "boolean",
+                  "title": "Usar Regionalização?",
+                  "default": true
+                },
+                "icon": {
+                  "title": "Ícone",
+                  "type": "object",
+                  "properties": {
+                    "icon": {
+                      "title": "Ícone",
+                      "type": "string",
+                      "enumNames": ["Pin do Mapa"],
+                      "enum": ["MapPin"],
+                      "default": "MapPin"
+                    },
+                    "alt": {
+                      "title": "Texto Alternativo",
+                      "type": "string",
+                      "default": "Pin do Mapa"
+                    }
+                  }
+                },
+                "label": {
+                  "title": "Chamada para Ação",
+                  "type": "string",
+                  "default": "Definir Localização"
+                }
+              }
+            },
+            "pageLinks": {
+              "title": "Links",
+              "type": "array",
+              "maxItems": 8,
+              "items": {
+                "title": "Link",
+                "type": "object",
+                "required": ["text", "url"],
+                "properties": {
+                  "text": {
+                    "title": "Texto do Link",
+                    "type": "string"
+                  },
+                  "url": {
+                    "title": "URL do Link",
+                    "type": "string"
+                  }
+                }
+              }
+            },
+            "menu": {
+              "type": "object",
+              "title": "Menu",
+              "properties": {
+                "icon": {
+                  "title": "Ícone",
+                  "type": "object",
+                  "properties": {
+                    "icon": {
+                      "title": "Ícone",
+                      "type": "string",
+                      "enumNames": ["Lista"],
+                      "enum": ["List"],
+                      "default": "List"
+                    },
+                    "alt": {
+                      "title": "Texto Alternativo",
+                      "type": "string",
+                      "default": "Lista"
+                    }
+                  }
+                }
+              }
+            },
+            "home": {
+              "title": "Início",
+              "type": "object",
+              "properties": {
+                "label": {
+                  "title": "Texto para Ir ao Início",
+                  "type": "string",
+                  "default": "Ir para o Início"
+                }
+              }
+            }
+          }
+        },
+        "myGarage": {
+          "title": "Minha Garagem",
+          "type": "object",
+          "properties": {
+            "icon": {
+              "title": "Ícone",
+              "type": "object",
+              "properties": {
+                "src": {
+                  "title": "Imagem do Ícone",
+                  "type": "string",
+                  "widget": {
+                    "ui:widget": "media-gallery"
+                  }
+                },
+                "alt": {
+                  "title": "Texto Alternativo",
+                  "type": "string",
+                  "default": "Carro"
+                }
+              }
+            },
+            "label": {
+              "title": "Título",
+              "type": "string",
+              "default": "Minha Garagem"
+            },
+            "sublabel": {
+              "title": "Subtítulo",
+              "type": "string",
+              "default": "Adicione seu veículo"
+            },
+            "link": {
+              "title": "Link",
+              "type": "string",
+              "default": "/garage"
+            },
+            "enabled": {
+              "title": "Habilitado",
+              "type": "boolean",
+              "default": true
+            }
+          }
+        },
+        "informZipCode": {
+          "title": "Informar CEP",
+          "type": "object",
+          "properties": {
+            "icon": {
+              "title": "Ícone",
+              "type": "object",
+              "properties": {
+                "src": {
+                  "title": "Imagem do Ícone",
+                  "type": "string",
+                  "widget": {
+                    "ui:widget": "media-gallery"
+                  }
+                },
+                "alt": {
+                  "title": "Texto Alternativo",
+                  "type": "string",
+                  "default": "Pin do Mapa"
+                }
+              }
+            },
+            "label": {
+              "title": "Título",
+              "type": "string",
+              "default": "Informe seu CEP"
+            },
+            "sublabel": {
+              "title": "Subtítulo",
+              "type": "string",
+              "default": ""
+            },
+            "link": {
+              "title": "Link",
+              "type": "string",
+              "default": ""
+            },
+            "enabled": {
+              "title": "Habilitado",
+              "type": "boolean",
+              "default": true
+            }
+          }
+        },
+        "search": {
+          "title": "Configurações de Busca",
+          "type": "object",
+          "properties": {
+            "placeholder": {
+              "title": "Texto de Exemplo",
+              "type": "string",
+              "default": "Busque por produtos"
+            },
+            "enabled": {
+              "title": "Busca Habilitada",
+              "type": "boolean",
+              "default": true
+            }
+          }
+        },
+        "highlightButton": {
+          "title": "Botão de Destaque",
+          "type": "object",
+          "properties": {
+            "text": {
+              "title": "Texto do Botão",
+              "type": "string",
+              "default": "Hiper Ofertas"
+            },
+            "href": {
+              "title": "Link do Botão",
+              "type": "string",
+              "default": "/ofertas"
+            },
+            "enabled": {
+              "title": "Habilitado",
+              "type": "boolean",
+              "default": true
+            }
+          }
+        },
+        "categories": {
+          "title": "Configurações de Categorias",
+          "type": "object",
+          "properties": {
+            "showAllButton": {
+              "title": "Mostrar Botão Todos",
+              "type": "boolean",
+              "default": true
+            },
+            "allButtonText": {
+              "title": "Texto do Botão Todos",
+              "type": "string",
+              "default": "Todos"
+            },
+            "visibleCategories": {
+              "title": "Número de Categorias Visíveis",
+              "type": "number",
+              "minimum": 0,
+              "maximum": 10,
+              "default": 7
+            }
+          }
+        },
+        "mobileMenu": {
+          "title": "Menu Mobile",
+          "type": "object",
+          "properties": {
+            "specificLinks": {
+              "title": "Links Específicos do Mobile",
+              "type": "array",
+              "maxItems": 5,
+              "items": {
+                "title": "Link",
+                "type": "object",
+                "required": ["text", "href"],
+                "properties": {
+                  "text": {
+                    "title": "Texto do Link",
+                    "type": "string"
+                  },
+                  "href": {
+                    "title": "URL do Link",
+                    "type": "string"
+                  },
+                  "icon": {
+                    "title": "Ícone",
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "name": "Alert",
+    "requiredScopes": [],
+    "schema": {
+      "title": "Alerta",
+      "description": "Adicionar um alerta",
+      "type": "object",
+      "required": ["icon", "content", "dismissible"],
+      "properties": {
+        "icon": {
+          "type": "string",
+          "title": "Ícone",
+          "enumNames": [
+            "Sino",
+            "Sino Tocando",
+            "Verificado",
+            "Informação",
+            "Caminhão",
+            "Usuário"
+          ],
+          "enum": ["Bell", "BellRinging", "Checked", "Info", "Truck", "User"]
+        },
+        "content": {
+          "type": "string",
+          "title": "Conteúdo"
+        },
+        "link": {
+          "title": "Link",
+          "type": "object",
+          "properties": {
+            "text": {
+              "type": "string",
+              "title": "Texto do Link"
+            },
+            "to": {
+              "type": "string",
+              "title": "Link de ação"
+            }
+          }
+        },
+        "dismissible": {
+          "type": "boolean",
+          "default": false,
+          "title": "É dispensável?"
+        }
+      }
+    }
+  },
+  {
+    "name": "Footer",
+    "requiredScopes": [],
+    "schema": {
+      "title": "Rodapé",
+      "description": "Rodapé exibido em todas as páginas",
+      "type": "object",
+      "properties": {
+        "backToTop": {
+          "title": "Voltar ao topo",
+          "type": "object",
+          "properties": {
+            "label": {
+              "title": "Texto do botão",
+              "type": "string",
+              "default": "Voltar ao topo"
+            },
+            "enabled": {
+              "title": "Exibir botão de voltar ao topo",
+              "type": "boolean",
+              "default": true
+            }
+          }
+        },
+        "incentives": {
+          "title": "Incentivos",
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 5,
+          "items": {
+            "title": "Incentivo",
+            "type": "object",
+            "required": ["title", "firstLineText", "icon"],
+            "properties": {
+              "title": {
+                "type": "string",
+                "title": "Título"
+              },
+              "firstLineText": {
+                "type": "string",
+                "title": "Primeira linha de texto"
+              },
+              "secondLineText": {
+                "type": "string",
+                "title": "Segunda linha de texto"
+              },
+              "icon": {
+                "type": "string",
+                "title": "Ícone",
+                "enumNames": [
+                  "Caminhão",
+                  "Calendário",
+                  "Presente",
+                  "Loja",
+                  "Escudo Verificado"
+                ],
+                "enum": [
+                  "Truck",
+                  "Calendar",
+                  "Gift",
+                  "Storefront",
+                  "ShieldCheck"
+                ]
+              },
+              "alt": {
+                "title": "Texto Alternativo",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "footerLinks": {
+          "title": "Seções de Links do Rodapé",
+          "type": "array",
+          "maxItems": 4,
+          "items": {
+            "title": "Seção de Links do Rodapé",
+            "type": "object",
+            "properties": {
+              "sectionTitle": {
+                "title": "Título da Seção",
+                "type": "string"
+              },
+              "items": {
+                "title": "Links",
+                "type": "array",
+                "minItems": 1,
+                "maxItems": 8,
+                "items": {
+                  "title": "Link",
+                  "type": "object",
+                  "required": ["text", "url"],
+                  "properties": {
+                    "text": {
+                      "title": "Texto do Link",
+                      "type": "string"
+                    },
+                    "url": {
+                      "title": "URL do Link",
+                      "type": "string",
+                      "description": "Absoluta ou Relativa"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "footerSocial": {
+          "title": "Links de Redes Sociais",
+          "type": "object",
+          "properties": {
+            "title": {
+              "title": "Título",
+              "type": "string",
+              "default": "Siga-nos"
+            },
+            "socialMedia": {
+              "title": "Redes Sociais",
+              "type": "array",
+              "minItems": 0,
+              "maxItems": 8,
+              "items": {
+                "title": "Link",
+                "type": "object",
+                "required": ["alt", "url", "icon"],
+                "properties": {
+                  "icon": {
+                    "title": "Ícone",
+                    "type": "string",
+                    "widget": {
+                      "ui:widget": "media-gallery"
+                    }
+                  },
+                  "alt": {
+                    "title": "Texto Alternativo",
+                    "type": "string"
+                  },
+                  "url": {
+                    "title": "URL",
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "logo": {
+          "title": "Logo",
+          "type": "object",
+          "properties": {
+            "src": {
+              "title": "Imagem",
+              "type": "string",
+              "widget": {
+                "ui:widget": "media-gallery"
+              }
+            },
+            "alt": {
+              "title": "Texto Alternativo",
+              "type": "string"
+            },
+            "link": {
+              "title": "Link do Logo",
+              "type": "object",
+              "required": ["url", "title"],
+              "properties": {
+                "url": {
+                  "title": "URL do Link",
+                  "type": "string"
+                },
+                "title": {
+                  "title": "Título do Link",
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "copyrightInfo": {
+          "title": "Mensagem de Copyright",
+          "type": "string",
+          "widget": {
+            "ui:widget": "draftjs-rich-text"
+          }
+        },
+        "acceptedPaymentMethods": {
+          "title": "Seções de Métodos de Pagamento",
+          "type": "object",
+          "required": ["showPaymentMethods"],
+          "properties": {
+            "showPaymentMethods": {
+              "title": "Exibir Métodos de Pagamento",
+              "type": "boolean",
+              "default": true
+            },
+            "title": {
+              "title": "Título",
+              "type": "string",
+              "default": "Métodos de Pagamento"
+            },
+            "paymentMethodsIcons": {
+              "title": "Métodos de Pagamento",
+              "type": "array",
+              "items": {
+                "title": "Método de Pagamento",
+                "type": "object",
+                "required": ["icon", "alt"],
+                "properties": {
+                  "icon": {
+                    "title": "Ícone",
+                    "type": "string",
+                    "widget": {
+                      "ui:widget": "media-gallery"
+                    }
+                  },
+                  "alt": {
+                    "type": "string",
+                    "title": "Texto Alternativo"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "name": "BannerText",
+    "requiredScopes": [],
+    "schema": {
+      "title": "Banner de Texto",
+      "description": "Adicione uma promoção rápida com um par texto/ação",
+      "type": "object",
+      "required": ["title", "caption", "link"],
+      "properties": {
+        "title": {
+          "title": "Título",
+          "type": "string"
+        },
+        "caption": {
+          "title": "Legenda",
+          "type": "string"
+        },
+        "link": {
+          "title": "Chamada para Ação",
+          "type": "object",
+          "required": ["text", "url"],
+          "properties": {
+            "text": {
+              "title": "Texto",
+              "type": "string"
+            },
+            "url": {
+              "title": "URL",
+              "type": "string"
+            },
+            "linkTargetBlank": {
+              "type": "boolean",
+              "title": "Abrir link em nova janela?",
+              "default": false
+            }
+          }
+        },
+        "colorVariant": {
+          "type": "string",
+          "title": "Variante de cor",
+          "enumNames": ["Principal", "Claro", "Destaque"],
+          "enum": ["main", "light", "accent"]
+        },
+        "variant": {
+          "type": "string",
+          "title": "Variante",
+          "enumNames": ["Primário", "Secundário"],
+          "enum": ["primary", "secondary"]
+        }
+      }
+    }
+  },
+  {
+    "name": "BannerCarousel",
+    "schema": {
+      "title": "Carrossel de Imagens",
+      "description": "Exibe um carrossel de imagens",
+      "type": "object",
+      "properties": {
+        "allItems": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "title": "Imagem",
+            "type": "object",
+            "properties": {
+              "mobileImage": {
+                "title": "Imagem para mobile",
+                "type": "string",
+                "widget": {
+                  "ui:widget": "image-uploader"
+                }
+              },
+              "desktopImage": {
+                "title": "Imagem para desktop",
+                "type": "string",
+                "widget": {
+                  "ui:widget": "image-uploader"
+                }
+              },
+              "href": {
+                "title": "Endereço URL para link",
+                "type": "string"
+              },
+              "alt": {
+                "title": "Descricao da imagem",
+                "description": "Como usuários que não podem abrir a imagem leem o link",
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "name": "BrandsCarousel",
+    "schema": {
+      "title": "Carrossel de Marcas",
+      "description": "Exibe um carrossel de imagens que representam marcas",
+      "type": "object",
+      "properties": {
+        "allItems": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "title": "Imagem",
+            "type": "object",
+            "properties": {
+              "mobileImage": {
+                "title": "Imagem para mobile",
+                "type": "string",
+                "widget": {
+                  "ui:widget": "image-uploader"
+                }
+              },
+              "desktopImage": {
+                "title": "Imagem para desktop",
+                "type": "string",
+                "widget": {
+                  "ui:widget": "image-uploader"
+                }
+              },
+              "href": {
+                "title": "Endereço URL para link",
+                "type": "string"
+              },
+              "alt": {
+                "title": "Descricao da imagem",
+                "description": "Como usuários que não podem abrir a imagem leem o link",
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "name": "ProductCategories",
+    "schema": {
+      "title": "Grade de Categorias de Produtos",
+      "description": "Exibe uma grade responsiva de categorias de produtos com upload de imagens",
+      "type": "object",
+      "properties": {
+        "title": {
+          "title": "Título da Seção",
+          "type": "string",
+          "default": "A Maior Variedade de Peças e Acessórios"
+        },
+        "categories": {
+          "title": "Categorias",
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 12,
+          "items": {
+            "title": "Categoria",
+            "type": "object",
+            "required": ["name", "image", "href"],
+            "properties": {
+              "name": {
+                "title": "Nome da Categoria",
+                "type": "string"
+              },
+              "image": {
+                "title": "Imagem da Categoria",
+                "type": "string",
+                "widget": {
+                  "ui:widget": "media-gallery"
+                }
+              },
+              "href": {
+                "title": "Link da Categoria",
+                "type": "string",
+                "description": "URL para onde a categoria direciona (ex: /pneu)"
+              },
+              "alt": {
+                "title": "Texto Alternativo da Imagem",
+                "type": "string",
+                "description": "Descrição da imagem para acessibilidade"
+              }
+            }
+          },
+          "default": [
+            {
+              "name": "Pneu",
+              "image": "",
+              "href": "/pneu",
+              "alt": "Ícone de pneu"
+            },
+            {
+              "name": "Autopeças",
+              "image": "",
+              "href": "/autopeças",
+              "alt": "Ícone de autopeças"
+            },
+            {
+              "name": "Elétrica",
+              "image": "",
+              "href": "/eletrica",
+              "alt": "Ícone de sistema elétrico"
+            },
+            {
+              "name": "Som e Video",
+              "image": "",
+              "href": "/som-video",
+              "alt": "Ícone de som e vídeo"
+            },
+            {
+              "name": "Acessórios Externos",
+              "image": "",
+              "href": "/acessorios-externos",
+              "alt": "Ícone de acessórios externos"
+            },
+            {
+              "name": "Acessórios Internos",
+              "image": "",
+              "href": "/acessorios-internos",
+              "alt": "Ícone de acessórios internos"
+            }
+          ]
+        },
+        "showMoreButtonText": {
+          "title": "Texto do Botão 'Ver Mais' (Mobile)",
+          "type": "string",
+          "default": "Ver mais departamentos"
+        },
+        "showMoreButtonHref": {
+          "title": "Link do Botão 'Ver Mais' (Mobile)",
+          "type": "string",
+          "default": "/categories"
+        }
+      }
+    }
+  },
+  {
+    "name": "Hero",
+    "requiredScopes": [],
+    "schema": {
+      "title": "Banner Principal",
+      "description": "Adicione uma promoção rápida com um par imagem/ação",
+      "type": "object",
+      "required": ["title"],
+      "properties": {
+        "title": {
+          "title": "Título",
+          "type": "string"
+        },
+        "subtitle": {
+          "title": "Subtítulo",
+          "type": "string"
+        },
+        "link": {
+          "title": "Chamada para Ação",
+          "type": "object",
+          "properties": {
+            "text": {
+              "type": "string",
+              "title": "Texto"
+            },
+            "url": {
+              "type": "string",
+              "title": "URL"
+            },
+            "linkTargetBlank": {
+              "type": "boolean",
+              "title": "Abrir link em nova janela?",
+              "default": false
+            }
+          }
+        },
+        "image": {
+          "type": "object",
+          "title": "Imagem",
+          "properties": {
+            "src": {
+              "type": "string",
+              "title": "Imagem",
+              "widget": {
+                "ui:widget": "media-gallery"
+              }
+            },
+            "alt": {
+              "type": "string",
+              "title": "Texto Alternativo"
+            }
+          }
+        },
+        "colorVariant": {
+          "type": "string",
+          "title": "Variante de cor",
+          "enumNames": ["Principal", "Claro", "Destaque"],
+          "enum": ["main", "light", "accent"]
+        },
+        "variant": {
+          "type": "string",
+          "title": "Variante",
+          "enumNames": ["Primário", "Secundário"],
+          "enum": ["primary", "secondary"]
+        }
+      }
+    }
+  },
+  {
+    "name": "Incentives",
+    "requiredScopes": [],
+    "schema": {
+      "title": "Incentivos",
+      "description": "Adicione incentivos aos seus compradores",
+      "type": "object",
+      "properties": {
+        "incentives": {
+          "title": "Incentivos",
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 5,
+          "items": {
+            "title": "Incentivo",
+            "type": "object",
+            "required": ["title", "firstLineText", "icon"],
+            "properties": {
+              "title": {
+                "type": "string",
+                "title": "Título"
+              },
+              "firstLineText": {
+                "type": "string",
+                "title": "Primeira linha de texto"
+              },
+              "secondLineText": {
+                "type": "string",
+                "title": "Segunda linha de texto"
+              },
+              "icon": {
+                "type": "string",
+                "title": "Ícone",
+                "enumNames": [
+                  "Caminhão",
+                  "Calendário",
+                  "Presente",
+                  "Loja",
+                  "Escudo Verificado"
+                ],
+                "enum": [
+                  "Truck",
+                  "Calendar",
+                  "Gift",
+                  "Storefront",
+                  "ShieldCheck"
+                ]
+              },
+              "alt": {
+                "title": "Texto Alternativo",
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "name": "ProductShelf",
+    "requiredScopes": [],
+    "schema": {
+      "title": "Prateleira de Produtos",
+      "description": "Adicione prateleiras personalizadas à sua loja",
+      "type": "object",
+      "required": ["title", "numberOfItems", "after", "sort"],
+      "properties": {
+        "title": {
+          "type": "string",
+          "title": "Título"
+        },
+        "numberOfItems": {
+          "type": "integer",
+          "title": "Número total de itens",
+          "default": 5,
+          "description": "Número total de itens. A quantidade pode ser menor se a consulta retornar menos produtos."
+        },
+        "itemsPerPage": {
+          "type": "integer",
+          "title": "Número de itens por página",
+          "default": 5,
+          "description": "Número de itens a serem exibidos por página no carrossel"
+        },
+        "after": {
+          "type": "integer",
+          "title": "Após",
+          "default": "0",
+          "description": "Item inicial de paginação"
+        },
+        "sort": {
+          "title": "Ordenação",
+          "description": "Ordem dos itens",
+          "default": "score_desc",
+          "enum": [
+            "discount_desc",
+            "name_asc",
+            "name_desc",
+            "orders_desc",
+            "price_asc",
+            "price_desc",
+            "release_desc",
+            "score_desc"
+          ],
+          "enumNames": [
+            "Desconto: maior para menor",
+            "Nome: A-Z",
+            "Nome: Z-A",
+            "Pedidos: maior para menor",
+            "Preço: menor para maior",
+            "Preço: maior para menor",
+            "Data de lançamento: mais recente para mais antigo",
+            "Relevância: maior para menor"
+          ]
+        },
+        "term": {
+          "type": "string",
+          "title": "Termo de busca"
+        },
+        "selectedFacets": {
+          "title": "Facetas",
+          "type": "array",
+          "items": {
+            "title": "Faceta",
+            "type": "object",
+            "required": ["key", "value"],
+            "properties": {
+              "key": {
+                "title": "Chave",
+                "description": "Para coleções use: productClusterIds",
+                "type": "string",
+                "default": "productClusterIds"
+              },
+              "value": {
+                "title": "Valor",
+                "description": "Ex. Para a coleção 'Mais Desejados', use: 140. Para consultar seus IDs de coleção, vá para a página de Coleções",
+                "type": "string",
+                "default": "140"
+              }
+            }
+          }
+        },
+        "taxesConfiguration": {
+          "title": "Configuração de Impostos",
+          "type": "object",
+          "properties": {
+            "usePriceWithTaxes": {
+              "title": "Deve usar impostos para calcular o preço?",
+              "type": "boolean",
+              "default": false
+            },
+            "taxesLabel": {
+              "title": "Texto do imposto a ser exibido",
+              "type": "string",
+              "default": "Imposto incluído"
+            }
+          }
+        },
+        "productCardConfiguration": {
+          "title": "Configuração do Card de Produto",
+          "type": "object",
+          "properties": {
+            "showDiscountBadge": {
+              "title": "Mostrar selo de desconto?",
+              "type": "boolean",
+              "default": true
+            },
+            "bordered": {
+              "title": "Cards devem ter borda?",
+              "type": "boolean",
+              "default": true
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "name": "CrossSellingShelf",
+    "requiredScopes": ["pdp", "custom"],
+    "schema": {
+      "title": "Prateleira de Venda Cruzada",
+      "description": "Adicione dados de produtos de venda cruzada aos seus usuários",
+      "type": "object",
+      "required": ["title", "numberOfItems", "kind"],
+      "properties": {
+        "title": {
+          "title": "Título",
+          "type": "string"
+        },
+        "numberOfItems": {
+          "title": "Número total de itens",
+          "type": "integer",
+          "default": 5,
+          "description": "Número total de itens. A quantidade pode ser menor se a consulta retornar menos produtos."
+        },
+        "itemsPerPage": {
+          "type": "integer",
+          "title": "Número de itens por página",
+          "default": 5,
+          "description": "Número de itens a serem exibidos por página no carrossel"
+        },
+        "kind": {
+          "title": "Tipo",
+          "description": "Alterar tipos de venda cruzada",
+          "default": "buy",
+          "enum": ["buy", "view"],
+          "enumNames": ["Quem comprou também comprou", "Quem viu também viu"]
+        },
+        "taxesConfiguration": {
+          "title": "Configuração de Impostos",
+          "type": "object",
+          "properties": {
+            "usePriceWithTaxes": {
+              "title": "Deve usar impostos para calcular o preço?",
+              "type": "boolean",
+              "default": false
+            },
+            "taxesLabel": {
+              "title": "Texto do imposto a ser exibido",
+              "type": "string",
+              "default": "Imposto incluído"
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "name": "ProductTiles",
+    "requiredScopes": [],
+    "schema": {
+      "title": "Mosaicos de Produto",
+      "description": "Adicione destaques personalizados à sua loja",
+      "type": "object",
+      "required": ["title", "first", "after", "sort"],
+      "properties": {
+        "title": {
+          "title": "Título",
+          "type": "string"
+        },
+        "first": {
+          "title": "Primeiro",
+          "type": "integer",
+          "default": 3,
+          "description": "Número de itens a serem exibidos"
+        },
+        "after": {
+          "title": "Após",
+          "type": "integer",
+          "default": "0",
+          "description": "Item inicial de paginação"
+        },
+        "sort": {
+          "title": "Ordenação",
+          "description": "Ordem dos itens",
+          "default": "score_desc",
+          "enum": [
+            "discount_desc",
+            "name_asc",
+            "name_desc",
+            "orders_desc",
+            "price_asc",
+            "price_desc",
+            "release_desc",
+            "score_desc"
+          ],
+          "enumNames": [
+            "Desconto: maior para menor",
+            "Nome: Z-A",
+            "Nome: A-Z",
+            "Pedidos: maior para menor",
+            "Preço: menor para maior",
+            "Preço: maior para menor",
+            "Data de lançamento: mais recente para mais antigo",
+            "Relevância: maior para menor"
+          ]
+        },
+        "term": {
+          "title": "Termo de busca",
+          "type": "string"
+        },
+        "selectedFacets": {
+          "title": "Facetas",
+          "type": "array",
+          "items": {
+            "title": "Faceta",
+            "type": "object",
+            "required": ["key", "value"],
+            "properties": {
+              "key": {
+                "title": "Chave",
+                "description": "Dica: Para coleções, use: productClusterIds",
+                "type": "string",
+                "default": "productClusterIds"
+              },
+              "value": {
+                "title": "Valor",
+                "description": "Dica: Para a coleção 140, use: 140",
+                "type": "string",
+                "default": "140"
+              }
+            }
+          }
+        },
+        "taxesConfiguration": {
+          "title": "Configuração de Impostos",
+          "type": "object",
+          "properties": {
+            "usePriceWithTaxes": {
+              "title": "Deve usar impostos para calcular o preço?",
+              "type": "boolean",
+              "default": false
+            },
+            "taxesLabel": {
+              "title": "Texto do imposto a ser exibido",
+              "type": "string",
+              "default": "Imposto incluído"
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "name": "Newsletter",
+    "requiredScopes": [],
+    "schema": {
+      "title": "Newsletter",
+      "description": "Permitir que usuários se inscrevam nas suas atualizações",
+      "type": "object",
+      "required": ["title"],
+      "properties": {
+        "icon": {
+          "title": "Ícone",
+          "type": "object",
+          "properties": {
+            "icon": {
+              "title": "Ícone",
+              "type": "string",
+              "enumNames": ["Envelope"],
+              "enum": ["Envelope"],
+              "default": "Envelope"
+            },
+            "alt": {
+              "type": "string",
+              "title": "Texto Alternativo",
+              "default": "Envelope"
+            }
+          }
+        },
+        "title": {
+          "title": "Título",
+          "type": "string",
+          "default": "Receba Novidades e Ofertas Especiais!"
+        },
+        "description": {
+          "title": "Descrição",
+          "type": "string",
+          "default": "Receba nossas novidades e promoções em primeira mão"
+        },
+        "privacyPolicy": {
+          "title": "Aviso de Política de Privacidade",
+          "type": "string",
+          "widget": {
+            "ui:widget": "draftjs-rich-text"
+          }
+        },
+        "emailInputLabel": {
+          "title": "Texto do campo de email",
+          "type": "string",
+          "default": "Seu Email"
+        },
+        "displayNameInput": {
+          "title": "Solicitar nome?",
+          "type": "boolean",
+          "default": true
+        },
+        "nameInputLabel": {
+          "title": "Texto do campo de nome",
+          "type": "string",
+          "default": "Seu Nome"
+        },
+        "subscribeButtonLabel": {
+          "title": "Texto do botão de inscrição",
+          "type": "string",
+          "default": "Inscrever-se"
+        },
+        "subscribeButtonLoadingLabel": {
+          "title": "Texto do botão de inscrição (carregando)",
+          "type": "string",
+          "default": "Carregando..."
+        },
+        "card": {
+          "title": "Newsletter deve estar em formato de cartão?",
+          "type": "boolean",
+          "default": false
+        },
+        "colorVariant": {
+          "title": "Variante de cor",
+          "type": "string",
+          "enumNames": ["Principal", "Claro", "Destaque"],
+          "enum": ["main", "light", "accent"],
+          "default": "main"
+        },
+        "toastSubscribe": {
+          "title": "Toast de Inscrição",
+          "type": "object",
+          "properties": {
+            "title": {
+              "title": "Título",
+              "description": "Título da Mensagem",
+              "type": "string",
+              "default": "Obrigado!"
+            },
+            "message": {
+              "title": "Mensagem",
+              "description": "Mensagem",
+              "type": "string",
+              "default": "Obrigado pela sua inscrição."
+            },
+            "icon": {
+              "title": "Ícone",
+              "type": "string",
+              "enumNames": ["Círculo com Check"],
+              "enum": ["CircleWavyCheck"],
+              "default": "CircleWavyCheck"
+            }
+          }
+        },
+        "toastSubscribeError": {
+          "title": "Toast de Erro na Inscrição",
+          "type": "object",
+          "properties": {
+            "title": {
+              "title": "Título",
+              "description": "Título da Mensagem",
+              "type": "string",
+              "default": "Ops."
+            },
+            "message": {
+              "title": "Mensagem",
+              "description": "Mensagem",
+              "type": "string",
+              "default": "Algo deu errado. Tente novamente."
+            },
+            "icon": {
+              "title": "Ícone",
+              "type": "string",
+              "enumNames": ["Círculo com Aviso"],
+              "enum": ["CircleWavyWarning"],
+              "default": "CircleWavyWarning"
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "name": "Children",
+    "schema": {
+      "title": "Filhos",
+      "type": "object",
+      "properties": {}
+    }
+  },
+  {
+    "name": "BannerNewsletter",
+    "requiredScopes": [],
+    "schema": {
+      "title": "Banner Newsletter",
+      "description": "Adicionar newsletter com um banner",
+      "type": "object",
+      "required": ["banner", "newsletter"],
+      "properties": {
+        "banner": {
+          "title": "Banner",
+          "type": "object",
+          "required": ["title", "link"],
+          "properties": {
+            "title": {
+              "title": "Título",
+              "type": "string",
+              "default": "Conheça Nosso Próximo Lançamento"
+            },
+            "caption": {
+              "title": "Legenda",
+              "type": "string",
+              "default": "Descubra tecnologia de ponta, recursos avançados e uma experiência de usuário perfeita. Prepare-se para o futuro!"
+            },
+            "link": {
+              "title": "Chamada para Ação",
+              "type": "object",
+              "required": ["text", "url"],
+              "properties": {
+                "text": {
+                  "title": "Texto",
+                  "type": "string",
+                  "default": "Comprar agora"
+                },
+                "url": {
+                  "title": "URL",
+                  "type": "string",
+                  "default": "/"
+                }
+              }
+            },
+            "colorVariant": {
+              "title": "Variante de cor",
+              "type": "string",
+              "enumNames": ["Principal", "Claro", "Destaque"],
+              "enum": ["main", "light", "accent"],
+              "default": "light"
+            },
+            "variant": {
+              "title": "Variante",
+              "type": "string",
+              "enumNames": ["Primário", "Secundário"],
+              "enum": ["primary", "secondary"],
+              "default": "secondary"
+            }
+          }
+        },
+        "newsletter": {
+          "title": "Newsletter",
+          "type": "object",
+          "required": ["title", "description"],
+          "properties": {
+            "icon": {
+              "title": "Ícone",
+              "type": "object",
+              "properties": {
+                "icon": {
+                  "title": "Ícone",
+                  "type": "string",
+                  "enumNames": ["Envelope"],
+                  "enum": ["Envelope"],
+                  "default": "Envelope"
+                },
+                "alt": {
+                  "type": "string",
+                  "title": "Texto Alternativo",
+                  "default": "Envelope"
+                }
+              }
+            },
+            "title": {
+              "title": "Título",
+              "type": "string",
+              "default": "Receba Novidades e Ofertas Especiais!"
+            },
+            "description": {
+              "title": "Descrição",
+              "type": "string",
+              "default": "Receba nossas novidades e promoções em primeira mão"
+            },
+            "privacyPolicy": {
+              "title": "Aviso de Política de Privacidade",
+              "type": "string",
+              "widget": {
+                "ui:widget": "draftjs-rich-text"
+              }
+            },
+            "emailInputLabel": {
+              "title": "Texto do campo de email",
+              "type": "string",
+              "default": "Seu Email"
+            },
+            "displayNameInput": {
+              "title": "Solicitar nome?",
+              "type": "boolean",
+              "default": true
+            },
+            "nameInputLabel": {
+              "title": "Texto do campo de nome",
+              "type": "string",
+              "default": "Seu Nome"
+            },
+            "subscribeButtonLabel": {
+              "title": "Texto do botão de inscrição",
+              "type": "string",
+              "default": "Inscrever-se"
+            },
+            "subscribeButtonLoadingLabel": {
+              "title": "Texto do botão de inscrição (carregando)",
+              "type": "string",
+              "default": "Carregando..."
+            },
+            "colorVariant": {
+              "title": "Variante de cor",
+              "type": "string",
+              "enumNames": ["Principal", "Claro", "Destaque"],
+              "enum": ["main", "light", "accent"],
+              "default": "main"
+            },
+            "toastSubscribe": {
+              "title": "Toast de Inscrição",
+              "type": "object",
+              "properties": {
+                "title": {
+                  "title": "Título",
+                  "description": "Título da Mensagem",
+                  "type": "string",
+                  "default": "Obrigado!"
+                },
+                "message": {
+                  "title": "Mensagem",
+                  "description": "Mensagem",
+                  "type": "string",
+                  "default": "Obrigado pela sua inscrição."
+                },
+                "icon": {
+                  "title": "Ícone",
+                  "type": "string",
+                  "enumNames": ["Círculo com Check"],
+                  "enum": ["CircleWavyCheck"],
+                  "default": "CircleWavyCheck"
+                }
+              }
+            },
+            "toastSubscribeError": {
+              "title": "Toast de Erro na Inscrição",
+              "type": "object",
+              "properties": {
+                "title": {
+                  "title": "Título",
+                  "description": "Título da Mensagem",
+                  "type": "string",
+                  "default": "Ops."
+                },
+                "message": {
+                  "title": "Mensagem",
+                  "description": "Mensagem",
+                  "type": "string",
+                  "default": "Algo deu errado. Tente novamente."
+                },
+                "icon": {
+                  "title": "Ícone",
+                  "type": "string",
+                  "enumNames": ["Círculo com Aviso"],
+                  "enum": ["CircleWavyWarning"],
+                  "default": "CircleWavyWarning"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "name": "Breadcrumb",
+    "requiredScopes": ["pdp", "plp"],
+    "schema": {
+      "title": "Trilha de Navegação",
+      "description": "Configure o ícone e profundidade da trilha de navegação",
+      "type": "object",
+      "required": ["icon", "alt"],
+      "properties": {
+        "icon": {
+          "title": "Ícone",
+          "type": "string",
+          "enumNames": ["Casa"],
+          "enum": ["House"]
+        },
+        "alt": {
+          "title": "Texto Alternativo",
+          "type": "string"
+        }
+      }
+    }
+  },
+  {
+    "name": "ProductDetails",
+    "requiredScopes": ["pdp"],
+    "schema": {
+      "title": "Detalhes do Produto",
+      "type": "object",
+      "description": "Exibir Seção de Detalhes do Produto",
+      "properties": {
+        "productTitle": {
+          "title": "Título do Produto",
+          "type": "object",
+          "properties": {
+            "discountBadge": {
+              "title": "Selo de Desconto",
+              "type": "object",
+              "properties": {
+                "showDiscountBadge": {
+                  "title": "Mostrar Selo de Desconto?",
+                  "type": "boolean",
+                  "default": false
+                },
+                "size": {
+                  "title": "Tamanho",
+                  "type": "string",
+                  "enumNames": ["Grande", "Pequeno"],
+                  "enum": ["big", "small"]
+                }
+              }
+            },
+            "refNumber": {
+              "title": "Mostrar Número de Referência?",
+              "type": "boolean",
+              "default": false
+            }
+          }
+        },
+        "buyButton": {
+          "title": "Botão de Compra",
+          "type": "object",
+          "properties": {
+            "title": {
+              "title": "Título",
+              "type": "string",
+              "default": "Adicionar ao Carrinho"
+            },
+            "icon": {
+              "title": "Ícone",
+              "type": "object",
+              "properties": {
+                "icon": {
+                  "title": "Ícone",
+                  "type": "string",
+                  "enumNames": ["Carrinho de Compras"],
+                  "enum": ["ShoppingCart"]
+                },
+                "alt": {
+                  "type": "string",
+                  "title": "Texto Alternativo",
+                  "default": "Carrinho de Compras"
+                }
+              }
+            }
+          }
+        },
+        "notAvailableButton": {
+          "title": "Botão Não Disponível",
+          "description": "Mostrado quando um SKU não está disponível",
+          "type": "object",
+          "properties": {
+            "title": {
+              "title": "Título",
+              "type": "string",
+              "default": "Não Disponível"
+            }
+          }
+        },
+        "shippingSimulator": {
+          "title": "Simulação de Frete",
+          "type": "object",
+          "properties": {
+            "title": {
+              "title": "Título",
+              "type": "string",
+              "default": "Frete"
+            },
+            "inputLabel": {
+              "title": "Texto do Campo",
+              "type": "string",
+              "default": "CEP"
+            },
+            "link": {
+              "title": "Descoberta de CEP",
+              "type": "object",
+              "properties": {
+                "text": {
+                  "title": "Texto do Link",
+                  "type": "string",
+                  "default": "Não sei meu CEP"
+                },
+                "to": {
+                  "title": "URL",
+                  "type": "string"
+                }
+              }
+            },
+            "shippingOptionsTableTitle": {
+              "title": "Cabeçalho da Tabela de Opções de Frete",
+              "type": "string"
+            }
+          }
+        },
+        "productDescription": {
+          "title": "Descrição do Produto",
+          "type": "object",
+          "properties": {
+            "initiallyExpanded": {
+              "type": "string",
+              "title": "Inicialmente Expandido?",
+              "enumNames": ["Primeiro", "Todos", "Nenhum"],
+              "enum": ["first", "all", "none"]
+            },
+            "displayDescription": {
+              "title": "Deve exibir descrição?",
+              "type": "boolean",
+              "default": true
+            },
+            "title": {
+              "title": "Título da seção de descrição",
+              "type": "string",
+              "default": "Descrição"
+            }
+          }
+        },
+        "quantitySelector": {
+          "title": "Seletor de Quantidade",
+          "type": "object",
+          "properties": {
+            "useUnitMultiplier": {
+              "title": "Deve usar multiplicador de unidade?",
+              "type": "boolean",
+              "default": false
+            }
+          }
+        },
+        "taxesConfiguration": {
+          "title": "Configuração de Impostos",
+          "type": "object",
+          "properties": {
+            "usePriceWithTaxes": {
+              "title": "Deve usar impostos para calcular o preço?",
+              "type": "boolean",
+              "default": false
+            },
+            "taxesLabel": {
+              "title": "Texto do imposto a ser exibido",
+              "type": "string",
+              "default": "Imposto incluído"
+            }
+          }
+        },
+        "skuMatrix": {
+          "title": "Configuração da Matriz SKU",
+          "type": "object",
+          "properties": {
+            "shouldDisplaySKUMatrix": {
+              "title": "Deve exibir Matriz SKU?",
+              "type": "boolean",
+              "default": false
+            },
+            "triggerButtonLabel": {
+              "title": "Texto do botão da Matriz SKU a ser exibido",
+              "type": "string",
+              "default": "Selecionar múltiplos"
+            },
+            "separatorButtonsText": {
+              "title": "Texto separador",
+              "description": "Texto que separa o botão adicionar ao carrinho do botão da Matriz SKU.",
+              "type": "string",
+              "default": "Ou"
+            },
+            "columns": {
+              "title": "Colunas",
+              "type": "object",
+              "properties": {
+                "name": {
+                  "title": "Texto da coluna do nome do SKU",
+                  "type": "string",
+                  "default": "Nome"
+                },
+                "additionalColumns": {
+                  "title": "Colunas adicionais",
+                  "type": "array",
+                  "items": {
+                    "title": "Coluna",
+                    "type": "object",
+                    "required": ["label", "value"],
+                    "properties": {
+                      "label": {
+                        "title": "Texto",
+                        "type": "string"
+                      },
+                      "value": {
+                        "title": "Valor",
+                        "type": "string"
+                      }
+                    }
+                  }
+                },
+                "availability": {
+                  "title": "Texto da coluna de disponibilidade",
+                  "type": "object",
+                  "properties": {
+                    "label": {
+                      "title": "Texto",
+                      "type": "string",
+                      "default": "Disponibilidade"
+                    },
+                    "stockDisplaySettings": {
+                      "title": "Configurações de exibição do estoque",
+                      "description": "Controle como o status do estoque dos seus produtos é exibido aos clientes na sua loja online.",
+                      "type": "string",
+                      "enum": ["showAvailability", "showStockQuantity"],
+                      "enumNames": [
+                        "Mostrar disponibilidade (Disponível/Fora de Estoque)",
+                        "Mostrar quantidade em estoque"
+                      ],
+                      "default": "showAvailability"
+                    }
+                  }
+                },
+                "price": {
+                  "title": "Texto da coluna de preço",
+                  "type": "string",
+                  "default": "Preço"
+                },
+                "quantitySelector": {
+                  "title": "Texto da coluna do seletor de quantidade",
+                  "type": "string",
+                  "default": "Quantidade"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "name": "ProductGallery",
+    "requiredScopes": ["plp", "search"],
+    "schema": {
+      "title": "Galeria de Produtos",
+      "type": "object",
+      "description": "Configuração da galeria de produtos",
+      "required": ["filter"],
+      "properties": {
+        "searchTermLabel": {
+          "title": "Texto do termo de busca na página",
+          "type": "string",
+          "default": "Mostrando resultados para:"
+        },
+        "totalCountLabel": {
+          "title": "Texto do total de resultados",
+          "type": "string",
+          "default": "Resultados"
+        },
+        "previousPageButton": {
+          "title": "Botão da página anterior",
+          "type": "object",
+          "required": ["icon", "label"],
+          "properties": {
+            "icon": {
+              "title": "Ícone",
+              "type": "object",
+              "properties": {
+                "icon": {
+                  "title": "Ícone",
+                  "type": "string",
+                  "enumNames": ["Seta Esquerda"],
+                  "enum": ["ArrowLeft"],
+                  "default": "ArrowLeft"
+                },
+                "alt": {
+                  "title": "Texto alternativo",
+                  "type": "string",
+                  "default": "Ícone da seta esquerda"
+                }
+              }
+            },
+            "label": {
+              "title": "Botão da página anterior",
+              "type": "string",
+              "default": "Página Anterior"
+            }
+          }
+        },
+        "loadMorePageButton": {
+          "title": "Botão Carregar Mais Produtos",
+          "type": "object",
+          "required": ["label"],
+          "properties": {
+            "label": {
+              "title": "Texto carregar mais produtos",
+              "type": "string",
+              "default": "Carregar mais produtos"
+            }
+          }
+        },
+        "filter": {
+          "title": "Filtro",
+          "type": "object",
+          "required": ["title", "mobileOnly"],
+          "properties": {
+            "title": {
+              "title": "Título do filtro",
+              "type": "string",
+              "default": "Filtros"
+            },
+            "mobileOnly": {
+              "title": "Apenas Mobile",
+              "type": "object",
+              "required": [
+                "filterButton",
+                "clearButtonLabel",
+                "applyButtonLabel"
+              ],
+              "properties": {
+                "filterButton": {
+                  "title": "Mostrar botão de filtro",
+                  "type": "object",
+                  "required": ["label", "icon"],
+                  "properties": {
+                    "label": {
+                      "title": "Texto",
+                      "type": "string",
+                      "default": "Filtros"
+                    },
+                    "icon": {
+                      "title": "Ícone",
+                      "type": "object",
+                      "required": ["icon", "alt"],
+                      "properties": {
+                        "icon": {
+                          "title": "Ícone",
+                          "type": "string",
+                          "enumNames": ["Controles Horizontais"],
+                          "enum": ["FadersHorizontal"],
+                          "default": "FadersHorizontal"
+                        },
+                        "alt": {
+                          "title": "Texto alternativo",
+                          "type": "string",
+                          "default": "Abrir Filtros"
+                        }
+                      }
+                    }
+                  }
+                },
+                "clearButtonLabel": {
+                  "title": "Texto do botão limpar",
+                  "type": "string",
+                  "default": "Limpar Tudo"
+                },
+                "applyButtonLabel": {
+                  "title": "Texto do botão aplicar",
+                  "type": "string",
+                  "default": "Aplicar"
+                }
+              }
+            }
+          }
+        },
+        "productCard": {
+          "title": "Configuração do Card de Produto",
+          "type": "object",
+          "properties": {
+            "showDiscountBadge": {
+              "title": "Mostrar selo de desconto?",
+              "type": "boolean",
+              "default": true
+            },
+            "bordered": {
+              "title": "Cards devem ter borda?",
+              "type": "boolean",
+              "default": true
+            },
+            "taxesConfiguration": {
+              "title": "Configuração de Impostos",
+              "type": "object",
+              "properties": {
+                "usePriceWithTaxes": {
+                  "title": "Deve usar impostos para calcular o preço?",
+                  "type": "boolean",
+                  "default": false
+                },
+                "taxesLabel": {
+                  "title": "Texto do imposto a ser exibido",
+                  "type": "string",
+                  "default": "Imposto incluído"
+                }
+              }
+            },
+            "sponsoredLabel": {
+              "title": "Texto Patrocinado",
+              "type": "string",
+              "default": "Patrocinado"
+            }
+          }
+        },
+        "emptyGallery": {
+          "title": "Galeria Vazia",
+          "type": "object",
+          "properties": {
+            "title": {
+              "title": "Título",
+              "type": "string",
+              "default": "Nada encontrado com sua busca"
+            },
+            "firstButton": {
+              "title": "Primeiro Botão",
+              "type": "object",
+              "properties": {
+                "label": {
+                  "type": "string",
+                  "title": "Texto",
+                  "default": "Ver Ofertas"
+                },
+                "url": {
+                  "type": "string",
+                  "title": "URL",
+                  "default": "/office"
+                },
+                "icon": {
+                  "title": "Ícone",
+                  "type": "string",
+                  "default": "CircleWavyWarning"
+                }
+              }
+            },
+            "secondButton": {
+              "title": "Segundo Botão",
+              "type": "object",
+              "properties": {
+                "label": {
+                  "type": "string",
+                  "title": "Texto",
+                  "default": "Recém Chegados"
+                },
+                "url": {
+                  "type": "string",
+                  "title": "URL",
+                  "default": "/technology"
+                },
+                "icon": {
+                  "title": "Ícone",
+                  "type": "string",
+                  "default": "RocketLaunch"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "name": "CartSidebar",
+    "requiredScopes": [],
+    "schema": {
+      "title": "Barra Lateral do Carrinho",
+      "type": "object",
+      "description": "Configuração da barra lateral do carrinho",
+      "properties": {
+        "title": {
+          "title": "Texto do título",
+          "type": "string",
+          "default": "Seu Carrinho"
+        },
+        "alert": {
+          "title": "Alerta",
+          "type": "object",
+          "properties": {
+            "icon": {
+              "title": "Ícone",
+              "type": "object",
+              "required": ["icon", "alt"],
+              "properties": {
+                "icon": {
+                  "title": "Ícone",
+                  "type": "string",
+                  "enumNames": [
+                    "Sino",
+                    "Sino Tocando",
+                    "Verificado",
+                    "Informação",
+                    "Caminhão",
+                    "Usuário"
+                  ],
+                  "enum": [
+                    "Bell",
+                    "BellRinging",
+                    "Checked",
+                    "Info",
+                    "Truck",
+                    "User"
+                  ],
+                  "default": "Truck"
+                },
+                "alt": {
+                  "title": "Texto alternativo",
+                  "type": "string",
+                  "default": "Ícone da seta direita"
+                }
+              }
+            },
+            "text": {
+              "type": "string",
+              "title": "Texto",
+              "default": "Frete grátis a partir de R$ 300"
+            }
+          }
+        },
+        "checkoutButton": {
+          "title": "Botão de finalização",
+          "type": "object",
+          "required": ["label", "loadingLabel", "icon"],
+          "properties": {
+            "label": {
+              "title": "Texto",
+              "type": "string",
+              "default": "Finalizar"
+            },
+            "loadingLabel": {
+              "title": "Texto carregando",
+              "type": "string",
+              "default": "Carregando..."
+            },
+            "icon": {
+              "title": "Ícone",
+              "type": "object",
+              "required": ["icon", "alt"],
+              "properties": {
+                "icon": {
+                  "title": "Ícone",
+                  "type": "string",
+                  "enumNames": ["Seta Direita"],
+                  "enum": ["ArrowRight"],
+                  "default": "ArrowRight"
+                },
+                "alt": {
+                  "title": "Texto alternativo",
+                  "type": "string",
+                  "default": "Ícone da seta direita"
+                }
+              }
+            }
+          }
+        },
+        "quantitySelector": {
+          "title": "Seletor de Quantidade",
+          "type": "object",
+          "properties": {
+            "useUnitMultiplier": {
+              "title": "Deve usar multiplicador de unidade?",
+              "type": "boolean",
+              "default": false
+            }
+          }
+        },
+        "taxesConfiguration": {
+          "title": "Configuração de Impostos",
+          "type": "object",
+          "properties": {
+            "usePriceWithTaxes": {
+              "title": "Deve usar impostos para calcular o preço?",
+              "type": "boolean",
+              "default": false
+            },
+            "taxesLabel": {
+              "title": "Texto do imposto a ser exibido",
+              "type": "string",
+              "default": "Imposto incluído"
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "name": "RegionBar",
+    "requiredScopes": [],
+    "schema": {
+      "title": "Barra de Região",
+      "type": "object",
+      "description": "Configuração da barra de região",
+      "required": ["label"],
+      "properties": {
+        "icon": {
+          "title": "Ícone de localização",
+          "type": "object",
+          "properties": {
+            "icon": {
+              "title": "Ícone",
+              "type": "string",
+              "enumNames": ["Pin do Mapa"],
+              "enum": ["MapPin"],
+              "default": "MapPin"
+            },
+            "alt": {
+              "title": "Texto alternativo",
+              "type": "string",
+              "default": "Ícone do pin do mapa"
+            }
+          }
+        },
+        "label": {
+          "title": "Texto da localização",
+          "type": "string",
+          "default": "Definir sua localização"
+        },
+        "editLabel": {
+          "title": "Texto editar localização",
+          "type": "string",
+          "default": "",
+          "description": "[Descontinuado] Este texto não deve mais ser usado."
+        },
+        "buttonIcon": {
+          "title": "Ícone do Botão",
+          "type": "object",
+          "properties": {
+            "icon": {
+              "title": "Ícone",
+              "type": "string",
+              "enumNames": ["Seta Direita"],
+              "enum": ["CaretRight"],
+              "default": "CaretRight"
+            },
+            "alt": {
+              "title": "Texto Alternativo",
+              "type": "string",
+              "default": "Ícone da seta direita"
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "name": "RegionModal",
+    "requiredScopes": [],
+    "schema": {
+      "title": "Modal de Região",
+      "type": "object",
+      "description": "Configuração do modal de região",
+      "properties": {
+        "title": {
+          "title": "Título",
+          "type": "string",
+          "default": "Definir sua localização"
+        },
+        "description": {
+          "title": "Descrição",
+          "type": "string",
+          "default": "Ofertas e disponibilidade variam por localização"
+        },
+        "closeButtonAriaLabel": {
+          "title": "Aria-label do botão fechar modal",
+          "type": "string",
+          "default": "Fechar Modal de Região"
+        },
+        "inputField": {
+          "title": "Campo de Entrada",
+          "type": "object",
+          "properties": {
+            "label": {
+              "title": "Texto do campo de entrada",
+              "description": "[Descontinuado] Use os campos da aba Configurações em Seções Globais",
+              "type": "string"
+            },
+            "errorMessage": {
+              "title": "Mensagem de erro do campo de entrada",
+              "description": "[Descontinuado] Use os campos da aba Configurações em Seções Globais",
+              "type": "string"
+            },
+            "noProductsAvailableErrorMessage": {
+              "title": "Mensagem de erro do campo de entrada para o cenário de nenhum produto disponível para uma localização",
+              "description": "[Descontinuado] Use os campos da aba Configurações em Seções Globais O '%s' é substituído pelo valor do CEP.",
+              "type": "string"
+            },
+            "buttonActionText": {
+              "title": "Texto do botão de ação do campo de entrada",
+              "description": "[Descontinuado] Use os campos da aba Configurações em Seções Globais",
+              "type": "string"
+            }
+          }
+        },
+        "idkPostalCodeLink": {
+          "title": "Link não sei meu CEP",
+          "type": "object",
+          "properties": {
+            "text": {
+              "type": "string",
+              "title": "Texto do Link",
+              "description": "[Descontinuado] Use os campos da aba Configurações em Seções Globais"
+            },
+            "to": {
+              "type": "string",
+              "title": "Link de ação",
+              "description": "[Descontinuado] Use os campos da aba Configurações em Seções Globais"
+            },
+            "icon": {
+              "title": "Ícone",
+              "type": "object",
+              "properties": {
+                "icon": {
+                  "title": "Ícone",
+                  "description": "[Descontinuado] Use os campos da aba Configurações em Seções Globais",
+                  "type": "string",
+                  "enumNames": ["Seta Quadrada Para Fora"],
+                  "enum": ["ArrowSquareOut"]
+                },
+                "alt": {
+                  "title": "Texto Alternativo",
+                  "description": "[Descontinuado] Use os campos da aba Configurações em Seções Globais",
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "name": "RegionPopover",
+    "requiredScopes": [],
+    "schema": {
+      "title": "Popover de Região",
+      "type": "object",
+      "description": "Configuração do popover de região",
+      "properties": {
+        "title": {
+          "title": "Título",
+          "type": "string",
+          "default": "Definir sua localização"
+        },
+        "closeButtonAriaLabel": {
+          "title": "Aria-label do botão fechar popover",
+          "type": "string",
+          "default": "Fechar Popover de Região"
+        },
+        "inputField": {
+          "title": "Campo de Entrada",
+          "type": "object",
+          "properties": {
+            "label": {
+              "title": "Texto do campo de entrada",
+              "description": "[Descontinuado] Use os campos da aba Configurações em Seções Globais",
+              "type": "string"
+            },
+            "errorMessage": {
+              "title": "Mensagem de erro do campo de entrada",
+              "description": "[Descontinuado] Use os campos da aba Configurações em Seções Globais",
+              "type": "string"
+            },
+            "noProductsAvailableErrorMessage": {
+              "title": "Mensagem de erro do campo de entrada para o cenário de nenhum produto disponível para uma localização",
+              "description": "[Descontinuado] Use os campos da aba Configurações em Seções Globais O '%s' é substituído pelo valor do CEP.",
+              "type": "string"
+            },
+            "buttonActionText": {
+              "title": "Texto do botão de ação do campo de entrada",
+              "description": "[Descontinuado] Use os campos da aba Configurações em Seções Globais",
+              "type": "string"
+            }
+          }
+        },
+        "textBeforeLocation": {
+          "title": "Texto antes da localização",
+          "type": "string",
+          "default": "Sua localização atual é",
+          "description": "Se a localização estiver disponível, este texto será mostrado antes da localização"
+        },
+        "textAfterLocation": {
+          "title": "Texto após a localização",
+          "type": "string",
+          "default": "Use o campo abaixo para alterá-la.",
+          "description": "Se a localização estiver disponível, este texto será mostrado após a localização"
+        },
+        "description": {
+          "title": "Descrição",
+          "type": "string",
+          "default": "Ofertas e disponibilidade variam por localização"
+        },
+        "idkPostalCodeLink": {
+          "title": "Link não sei meu CEP",
+          "type": "object",
+          "properties": {
+            "text": {
+              "type": "string",
+              "title": "Texto do Link",
+              "description": "[Descontinuado] Use os campos da aba Configurações em Seções Globais"
+            },
+            "to": {
+              "type": "string",
+              "title": "Link de ação",
+              "description": "[Descontinuado] Use os campos da aba Configurações em Seções Globais"
+            },
+            "icon": {
+              "title": "Ícone",
+              "type": "object",
+              "properties": {
+                "icon": {
+                  "title": "Ícone",
+                  "description": "[Descontinuado] Use os campos da aba Configurações em Seções Globais",
+                  "type": "string",
+                  "enumNames": ["Seta Quadrada Para Fora"],
+                  "enum": ["ArrowSquareOut"]
+                },
+                "alt": {
+                  "title": "Texto Alternativo",
+                  "description": "[Descontinuado] Use os campos da aba Configurações em Seções Globais",
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "name": "EmptyState",
+    "schema": {
+      "title": "Estado Vazio",
+      "type": "object",
+      "description": "Configuração do estado vazio",
+      "properties": {
+        "title": {
+          "title": "Título",
+          "type": "string"
+        },
+        "titleIcon": {
+          "title": "Ícone do Título",
+          "type": "object",
+          "properties": {
+            "icon": {
+              "title": "Ícone",
+              "type": "string",
+              "enumNames": ["Círculo com Aviso"],
+              "enum": ["CircleWavyWarning"]
+            },
+            "alt": {
+              "title": "Texto Alternativo",
+              "type": "string"
+            }
+          }
+        },
+        "subtitle": {
+          "title": "Subtítulo",
+          "type": "string"
+        },
+        "showLoader": {
+          "type": "boolean",
+          "title": "Mostrar carregador?",
+          "default": false
+        },
+        "errorState": {
+          "title": "Estado de erro usado para mostrar propriedades errorId e fromUrl nas páginas 500 e 404",
+          "type": "object",
+          "properties": {
+            "errorId": {
+              "title": "errorId usado nas páginas 500 e 404",
+              "type": "object",
+              "properties": {
+                "show": {
+                  "type": "boolean",
+                  "title": "Mostrar errorId no final da mensagem?"
+                },
+                "description": {
+                  "type": "string",
+                  "title": "Descrição mostrada antes do errorId"
+                }
+              }
+            },
+            "fromUrl": {
+              "title": "fromUrl usado nas páginas 500 e 404",
+              "type": "object",
+              "properties": {
+                "show": {
+                  "type": "boolean",
+                  "title": "Mostrar fromUrl no final da mensagem?"
+                },
+                "description": {
+                  "type": "string",
+                  "title": "Descrição mostrada antes do fromUrl"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "name": "EasySearch",
+    "requiredScopes": [],
+    "schema": {
+      "title": "Busca Fácil de Pneus",
+      "type": "object",
+      "description": "Configuração do componente de busca de pneus",
+      "properties": {
+        "enabled": {
+          "title": "Habilitado",
+          "type": "boolean",
+          "default": true
+        },
+        "title": {
+          "title": "Título",
+          "type": "string",
+          "default": "Personalize sua busca abaixo"
+        },
+        "searchButtonText": {
+          "title": "Texto do Botão de Busca",
+          "type": "string",
+          "default": "Buscar"
+        }
+      }
+    }
+  },
+  {
+    "name": "CustomIncentives",
+    "requiredScopes": [],
+    "schema": {
+      "title": "Incentivos Personalizados",
+      "type": "object",
+      "description": "Seção de incentivos com ícones e descrições",
+      "properties": {
+        "enabled": {
+          "title": "Habilitado",
+          "type": "boolean",
+          "default": true
+        },
+        "incentives": {
+          "title": "Incentivos",
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 4,
+          "items": {
+            "title": "Incentivo",
+            "type": "object",
+            "required": ["icon", "title", "subtitle"],
+            "properties": {
+              "icon": {
+                "title": "Ícone (Emoji)",
+                "type": "string",
+                "default": "🛡️"
+              },
+              "title": {
+                "title": "Título",
+                "type": "string",
+                "default": "Título do Incentivo"
+              },
+              "subtitle": {
+                "title": "Subtítulo",
+                "type": "string",
+                "default": "Descrição do incentivo"
+              }
+            }
+          },
+          "default": [
+            {
+              "icon": "🛡️",
+              "title": "Compra 100% segura",
+              "subtitle": "Suas compras com tranquilidade"
+            },
+            {
+              "icon": "💳",
+              "title": "Em até 10x sem juros",
+              "subtitle": "nos cartões de crédito"
+            },
+            {
+              "icon": "🚚",
+              "title": "Entrega em todo Brasil",
+              "subtitle": "Qualidade e agilidade pra você"
+            },
+            {
+              "icon": "💎",
+              "title": "Até 10% de desconto",
+              "subtitle": "no boleto, pix ou 1x cartão"
+            }
+          ]
+        }
+      }
+    }
+  }
+]
