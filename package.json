@@ -1,0 +1,13 @@
+{
+  "name": "vtex-headless-cms-builder",
+  "version": "1.0.0",
+  "author": "Gabriel Nobrega",
+  "license": "MIT",
+  "scripts": {
+    "generate-all-types": "npx tsx generate-all-types.ts"
+  },
+  "dependencies": {
+    "@sinclair/typebox": "0.34.40",
+    "schema2typebox": "1.7.6"
+  }
+}
